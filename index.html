@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background canvases -->
+  <canvas id="particles-canvas"></canvas>
+  <canvas id="petals-canvas"></canvas>
+  <div class="ambient-glow"></div>
+
+  <!-- Music toggle -->
+  <button class="music-toggle" aria-label="Toggle ambient music">
+    <div class="bars">
+      <div class="bar" style="height:6px;"></div>
+      <div class="bar" style="height:10px;"></div>
+      <div class="bar" style="height:14px;"></div>
+      <div class="bar" style="height:8px;"></div>
+    </div>
+  </button>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <canvas id="rose-draw-canvas" width="240" height="220"></canvas>
+    <h1 data-parallax="-0.05">You Are My Rose</h1>
+    <p class="subtitle">tap the rose to make it bloom</p>
+    <div class="scroll-hint">
+      scroll down
+      <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+        <path d="M2 2L10 10L18 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Poem Section -->
+  <div class="divider"></div>
+  <section class="section" id="poem">
+    <h2>A Whisper of Petals</h2>
+    <ul class="poem-lines">
+      <li>In gardens where the moonlight plays,</li>
+      <li>a single rose outlasts the days.</li>
+      <li>Its petals hold the warmth of you,</li>
+      <li>a crimson stained in morning dew.</li>
+      <li>&nbsp;</li>
+      <li>No wind could steal its gentle grace,</li>
+      <li>no storm could move it from its place.</li>
+      <li>For every thorn that guards its stem,</li>
+      <li>a thousand kisses bloom again.</li>
+    </ul>
+  </section>
+
+  <!-- Garden Section -->
+  <div class="divider"></div>
+  <section class="section" id="garden">
+    <h2>A Garden for You</h2>
+    <p>Each rose holds a secret — hover to reveal, click to bloom.</p>
+    <div class="garden">
+      <div class="garden-rose">
+        <svg width="70" height="90" viewBox="0 0 70 90">
+          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
+          <path d="M35 55 Q15 35 20 18 Q25 30 35 42" fill="#c03050"/>
+          <path d="M35 55 Q55 35 50 18 Q45 30 35 42" fill="#d44060"/>
+          <path d="M35 50 Q25 32 28 20 Q30 30 35 38" fill="#e05575"/>
+          <path d="M35 50 Q45 32 42 20 Q40 30 35 38" fill="#e86080"/>
+          <ellipse cx="35" cy="30" rx="5" ry="4" fill="#f0809a"/>
+        </svg>
+        <span class="rose-msg">You are beautiful</span>
+      </div>
+      <div class="garden-rose">
+        <svg width="70" height="90" viewBox="0 0 70 90">
+          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
+          <path d="M35 55 Q10 30 18 12 Q22 28 35 40" fill="#d4a060"/>
+          <path d="M35 55 Q60 30 52 12 Q48 28 35 40" fill="#e0b070"/>
+          <path d="M35 48 Q22 28 26 15 Q28 26 35 36" fill="#e8c080"/>
+          <path d="M35 48 Q48 28 44 15 Q42 26 35 36" fill="#f0d090"/>
+          <ellipse cx="35" cy="28" rx="5" ry="4" fill="#f8e0a0"/>
+        </svg>
+        <span class="rose-msg">You are my sunshine</span>
+      </div>
+      <div class="garden-rose">
+        <svg width="70" height="90" viewBox="0 0 70 90">
+          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
+          <path d="M35 55 Q12 32 18 14 Q23 28 35 42" fill="#e8e8e8"/>
+          <path d="M35 55 Q58 32 52 14 Q47 28 35 42" fill="#f0f0f0"/>
+          <path d="M35 48 Q22 28 26 16 Q28 26 35 38" fill="#f5f0f0"/>
+          <path d="M35 48 Q48 28 44 16 Q42 26 35 38" fill="#faf5f5"/>
+          <ellipse cx="35" cy="28" rx="5" ry="4" fill="#fff"/>
+        </svg>
+        <span class="rose-msg">Forever yours</span>
+      </div>
+      <div class="garden-rose">
+        <svg width="70" height="90" viewBox="0 0 70 90">
+          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
+          <path d="M35 55 Q12 32 18 14 Q23 28 35 42" fill="#8040a0"/>
+          <path d="M35 55 Q58 32 52 14 Q47 28 35 42" fill="#9050b0"/>
+          <path d="M35 48 Q22 28 26 16 Q28 26 35 38" fill="#a060c0"/>
+          <path d="M35 48 Q48 28 44 16 Q42 26 35 38" fill="#b070d0"/>
+          <ellipse cx="35" cy="28" rx="5" ry="4" fill="#c090e0"/>
+        </svg>
+        <span class="rose-msg">I dream of you</span>
+      </div>
+      <div class="garden-rose">
+        <svg width="70" height="90" viewBox="0 0 70 90">
+          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
+          <path d="M35 55 Q12 32 18 14 Q23 28 35 42" fill="#d03050"/>
+          <path d="M35 55 Q58 32 52 14 Q47 28 35 42" fill="#e04060"/>
+          <path d="M35 48 Q22 28 26 16 Q28 26 35 38" fill="#e85575"/>
+          <path d="M35 48 Q48 28 44 16 Q42 26 35 38" fill="#f06585"/>
+          <ellipse cx="35" cy="28" rx="5" ry="4" fill="#f8809a"/>
+        </svg>
+        <span class="rose-msg">My heart is yours</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Heart Section -->
+  <div class="divider"></div>
+  <section class="section heart-section" id="heart">
+    <h2>With All My Heart</h2>
+    <svg class="heart-svg" width="120" height="110" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#e04060"/>
+          <stop offset="100%" stop-color="#c02040"/>
+        </linearGradient>
+      </defs>
+      <path d="M60 100 C60 100 5 65 5 30 C5 10 25 0 40 0 C50 0 58 8 60 15 C62 8 70 0 80 0 C95 0 115 10 115 30 C115 65 60 100 60 100Z" fill="url(#heartGrad)"/>
+      <path d="M60 100 C60 100 5 65 5 30 C5 10 25 0 40 0 C50 0 58 8 60 15" fill="rgba(255,255,255,0.08)"/>
+    </svg>
+    <p style="margin-top: 1.5rem; color: #8a5a5a; font-size: 0.9rem;">click the heart to send a kiss</p>
+    <div class="love-counter"></div>
+  </section>
+
+  <!-- Letter Section -->
+  <div class="divider"></div>
+  <section class="section" id="letter">
+    <h2>A Letter for You</h2>
+    <div class="letter">
+      <p>
+        If I could gather every star and weave them into words,
+        they still would not be bright enough to tell you what you mean to me.
+        You are the quiet breath of dawn, the warmth that finds me in the cold.
+        Every moment with you is a petal unfolding — gentle, certain, beautiful.
+      </p>
+      <p style="margin-top: 1.5rem;">
+        I don't need forever to know this is real.
+        I only need right now, with you.
+      </p>
+      <div class="signature">With love, always</div>
+    </div>
+  </section>
+
+  <footer>
+    <svg width="20" height="18" viewBox="0 0 120 110" style="vertical-align: middle; margin-right: 6px;">
+      <path d="M60 100 C60 100 5 65 5 30 C5 10 25 0 40 0 C50 0 58 8 60 15 C62 8 70 0 80 0 C95 0 115 10 115 30 C115 65 60 100 60 100Z" fill="#5a2030"/>
+    </svg>
+    made with love
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
