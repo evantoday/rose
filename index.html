@@ -11,24 +11,27 @@
 </head>
 <body>
 
+  <!-- Cursor glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
   <!-- Floating petals (created by JS) -->
   <div class="petals-container" id="petals"></div>
+
+  <!-- Progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
 
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero__bg"></div>
+    <div class="hero__particles" id="heroParticles"></div>
     <div class="hero__content">
-      <div class="hero__rose">
+      <div class="hero__rose" id="heroRose">
         <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" class="rose-svg">
-          <!-- Stem -->
           <line x1="100" y1="180" x2="100" y2="290" stroke="#5a9e50" stroke-width="3" stroke-linecap="round" class="stem"/>
-          <!-- Leaves -->
           <path d="M100 230 C85 220 70 225 65 235 C70 230 85 228 100 230" fill="#6ab560" class="leaf leaf--1"/>
           <path d="M100 250 C115 240 130 245 135 255 C130 250 115 248 100 250" fill="#5aad4c" class="leaf leaf--2"/>
-          <!-- Sepals -->
           <path d="M100 185 C94 178 82 180 78 174 C84 176 94 174 100 178" fill="#6ab560"/>
           <path d="M100 185 C106 178 118 180 122 174 C116 176 106 174 100 178" fill="#5aad4c"/>
-          <!-- Rose bloom -->
           <g class="bloom">
             <ellipse cx="72" cy="155" rx="28" ry="34" fill="#e8768a" opacity="0.7" transform="rotate(-15,72,155)"/>
             <ellipse cx="128" cy="155" rx="28" ry="34" fill="#ea7e92" opacity="0.7" transform="rotate(15,128,155)"/>
@@ -50,6 +53,7 @@
             <path d="M97 130 C97 126 100 124 103 126 C104 128 101 132 98 131" fill="#fffafa" opacity="0.8"/>
           </g>
         </svg>
+        <div class="rose-glow"></div>
       </div>
       <h1 class="hero__title">You Are Not Alone</h1>
       <p class="hero__sub">this one's for you</p>
@@ -87,26 +91,32 @@
     <div class="section__inner">
       <span class="section__label">reminders</span>
       <h2>These Are for You</h2>
+      <p class="section__desc">tap a card to keep it</p>
       <div class="cards">
-        <div class="card">
+        <div class="card" data-tilt>
           <div class="card__icon">&#x1F339;</div>
           <p class="card__text">You are strong</p>
+          <div class="card__glow"></div>
         </div>
-        <div class="card">
+        <div class="card" data-tilt>
           <div class="card__icon">&#x1F33C;</div>
           <p class="card__text">You're not alone</p>
+          <div class="card__glow"></div>
         </div>
-        <div class="card">
+        <div class="card" data-tilt>
           <div class="card__icon">&#x1F33A;</div>
           <p class="card__text">Someone cares about you</p>
+          <div class="card__glow"></div>
         </div>
-        <div class="card">
+        <div class="card" data-tilt>
           <div class="card__icon">&#x1F338;</div>
           <p class="card__text">It's okay to rest</p>
+          <div class="card__glow"></div>
         </div>
-        <div class="card">
+        <div class="card" data-tilt>
           <div class="card__icon">&#x1F337;</div>
           <p class="card__text">I'm always here</p>
+          <div class="card__glow"></div>
         </div>
       </div>
     </div>
@@ -117,6 +127,7 @@
     <div class="section__inner">
       <span class="section__label">send love</span>
       <h2>Sending You Strength</h2>
+      <div class="heart-ring" id="heartRing"></div>
       <button class="heart-btn" id="heartBtn" aria-label="Send a prayer">
         <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -132,7 +143,13 @@
     <div class="section__inner">
       <span class="section__label">a letter</span>
       <h2>A Letter for You</h2>
-      <div class="letter">
+      <div class="envelope" id="envelope">
+        <div class="envelope__flap"></div>
+        <div class="envelope__body">
+          <span class="envelope__prompt">tap to open</span>
+        </div>
+      </div>
+      <div class="letter" id="letterContent">
         <p>
           I'm not gonna pretend like I know exactly what you're going through right now.
           And I'm not gonna hit you with some "everything happens for a reason" type thing
