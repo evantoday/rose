@@ -1,32 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;600&display=swap');
 
-/* ── Reset ─────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ── Pause all animations until loaded ─────────────────── */
 .loading * { animation-play-state: paused !important; }
 
 body {
   min-height: 100vh;
-  background: #000;
-  color: #e0c8c8;
+  background: #fef6f0;
+  color: #5a4040;
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
 
-/* ── Night sky background ──────────────────────────────── */
-.night {
+/* ── Pastel sky background ─────────────────────────────── */
+.sky {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 30, 0.4) 0%, transparent 60%),
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.01) 0%, transparent 2%),
-    radial-gradient(circle at 80% 15%, rgba(255,255,255,0.015) 0%, transparent 1.5%),
-    radial-gradient(circle at 50% 40%, rgba(255,255,255,0.01) 0%, transparent 1%),
-    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.008) 0%, transparent 1.2%),
-    radial-gradient(circle at 30% 70%, rgba(255,255,255,0.01) 0%, transparent 1%),
-    #000;
+    radial-gradient(ellipse at 50% 100%, #e8f5e0 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 30%, #fce4ec 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 20%, #f3e5f5 0%, transparent 35%),
+    linear-gradient(to bottom, #fef0f5 0%, #fef6f0 60%, #eef7e8 100%);
   z-index: 0;
+}
+
+/* Soft clouds */
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.cloud::before, .cloud::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+.cloud--1 {
+  width: 12vmin;
+  height: 4vmin;
+  top: 12%;
+  left: 15%;
+  animation: cloudDrift 30s linear infinite;
+}
+.cloud--1::before { width: 6vmin; height: 5vmin; top: -2.5vmin; left: 2vmin; }
+.cloud--1::after { width: 5vmin; height: 4vmin; top: -1.5vmin; left: 6vmin; }
+
+.cloud--2 {
+  width: 10vmin;
+  height: 3.5vmin;
+  top: 8%;
+  right: 20%;
+  animation: cloudDrift 35s linear 5s infinite;
+}
+.cloud--2::before { width: 5vmin; height: 4vmin; top: -2vmin; left: 1.5vmin; }
+.cloud--2::after { width: 4vmin; height: 3.5vmin; top: -1vmin; left: 5vmin; }
+
+.cloud--3 {
+  width: 8vmin;
+  height: 3vmin;
+  top: 18%;
+  left: 55%;
+  opacity: 0.4;
+  animation: cloudDrift 40s linear 10s infinite;
+}
+.cloud--3::before { width: 4vmin; height: 3.5vmin; top: -1.5vmin; left: 1vmin; }
+
+@keyframes cloudDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(15vmin); }
 }
 
 /* ── Hero ──────────────────────────────────────────────── */
@@ -47,26 +92,25 @@ body {
   text-align: center;
   z-index: 10;
   opacity: 0;
-  animation: textFadeIn 3s ease 5s forwards;
+  animation: fadeUp 3s ease 5s forwards;
 }
 
 .hero__text h1 {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  color: #d4a0a0;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  color: #c06b7e;
   font-weight: 400;
-  text-shadow: 0 0 40px rgba(180, 50, 70, 0.12);
 }
 
 .hero__sub {
   font-family: 'Sora', sans-serif;
   font-weight: 300;
   font-size: clamp(0.85rem, 2vw, 1.1rem);
-  color: #7a5555;
+  color: #c4929e;
   margin-top: 0.8rem;
 }
 
-@keyframes textFadeIn {
+@keyframes fadeUp {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -80,8 +124,8 @@ body {
   text-align: center;
   z-index: 10;
   opacity: 0;
-  animation: textFadeIn 2s ease 7s forwards;
-  color: #4a3030;
+  animation: fadeUp 2s ease 7s forwards;
+  color: #c4a0a8;
   font-size: 0.7rem;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -90,7 +134,7 @@ body {
 .scroll-hint__arrow {
   width: 1px;
   height: 16px;
-  background: linear-gradient(to bottom, #4a3030, transparent);
+  background: linear-gradient(to bottom, #c4a0a8, transparent);
   margin: 6px auto 0;
   animation: arrowPulse 2.5s ease-in-out infinite;
 }
@@ -109,13 +153,14 @@ body {
   z-index: 2;
 }
 
-/* ── Rose stems ────────────────────────────────────────── */
+/* ── Rose base ─────────────────────────────────────────── */
 .rose { position: absolute; bottom: 0; }
 
 .rose--1 { left: 50%; transform: translateX(-50%); }
-.rose--2 { left: 25%; transform: translateX(-50%) rotate(-12deg); }
-.rose--3 { left: 75%; transform: translateX(-50%) rotate(10deg); }
+.rose--2 { left: 25%; transform: translateX(-50%) rotate(-10deg); }
+.rose--3 { left: 75%; transform: translateX(-50%) rotate(8deg); }
 
+/* ── Stems ─────────────────────────────────────────────── */
 .rose__stem {
   position: absolute;
   bottom: 0;
@@ -124,7 +169,7 @@ body {
   width: 0.5vmin;
   height: 0;
   border-radius: 0.25vmin;
-  background: linear-gradient(to top, #2a5a18, #3a7a28);
+  background: linear-gradient(to top, #6ab560, #8ecc82);
   transform-origin: bottom center;
   animation: growStem 3s ease forwards;
 }
@@ -138,12 +183,12 @@ body {
   to { height: var(--stem-h); }
 }
 
-/* ── Rose leaves ───────────────────────────────────────── */
+/* ── Leaves ────────────────────────────────────────────── */
 .rose__leaf {
   position: absolute;
   width: 4vmin;
   height: 2.5vmin;
-  background: linear-gradient(135deg, #1a6020, #0e4a15);
+  background: linear-gradient(135deg, #7cc96e, #5aad4c);
   border-radius: 0 70% 0 70%;
   transform-origin: left center;
   transform: scale(0);
@@ -155,11 +200,11 @@ body {
   transform-origin: right center;
 }
 
-.rose--1 .rose__leaf--left { bottom: 30vmin; animation: leafGrow 1s ease 2.5s forwards; }
+.rose--1 .rose__leaf--left  { bottom: 30vmin; animation: leafGrow 1s ease 2.5s forwards; }
 .rose--1 .rose__leaf--right { bottom: 22vmin; left: 50%; animation: leafGrow 1s ease 2.8s forwards; }
-.rose--2 .rose__leaf--left { bottom: 22vmin; animation: leafGrow 1s ease 2.9s forwards; }
+.rose--2 .rose__leaf--left  { bottom: 22vmin; animation: leafGrow 1s ease 2.9s forwards; }
 .rose--2 .rose__leaf--right { bottom: 16vmin; left: 50%; animation: leafGrow 1s ease 3.1s forwards; }
-.rose--3 .rose__leaf--left { bottom: 20vmin; animation: leafGrow 1s ease 2.7s forwards; }
+.rose--3 .rose__leaf--left  { bottom: 20vmin; animation: leafGrow 1s ease 2.7s forwards; }
 .rose--3 .rose__leaf--right { bottom: 14vmin; left: 50%; animation: leafGrow 1s ease 3s forwards; }
 
 @keyframes leafGrow {
@@ -167,107 +212,124 @@ body {
   to { transform: scale(1); }
 }
 
-/* ── Rose bloom ────────────────────────────────────────── */
+/* ── Rose bloom (the flower head) ──────────────────────── */
 .rose__bloom {
   position: absolute;
   left: 50%;
   transform: translateX(-50%) scale(0);
-  width: 10vmin;
-  height: 10vmin;
   animation: bloomIn 2s cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
 }
 
-.rose--1 .rose__bloom { bottom: 48vmin; animation-delay: 3s; }
-.rose--2 .rose__bloom { bottom: 38vmin; animation-delay: 3.4s; width: 8vmin; height: 8vmin; }
-.rose--3 .rose__bloom { bottom: 33vmin; animation-delay: 3.2s; width: 8.5vmin; height: 8.5vmin; }
+.rose--1 .rose__bloom {
+  bottom: 48vmin;
+  width: 14vmin;
+  height: 14vmin;
+  animation-delay: 3s;
+}
+.rose--2 .rose__bloom {
+  bottom: 38vmin;
+  width: 11vmin;
+  height: 11vmin;
+  animation-delay: 3.4s;
+}
+.rose--3 .rose__bloom {
+  bottom: 33vmin;
+  width: 12vmin;
+  height: 12vmin;
+  animation-delay: 3.2s;
+}
 
 @keyframes bloomIn {
-  from { transform: translateX(-50%) scale(0); }
-  to { transform: translateX(-50%) scale(1); }
+  from { transform: translateX(-50%) scale(0) rotate(-20deg); }
+  to { transform: translateX(-50%) scale(1) rotate(0deg); }
 }
 
-/* ── Petals ────────────────────────────────────────────── */
+/* ── Petals — realistic layered rose ───────────────────── */
 .rose__petal {
   position: absolute;
-  border-radius: 50% 0 50% 50%;
-  transform-origin: bottom right;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: 50% 100%;
 }
 
-/* Outer petals */
+/* Outer petals — big, curling out */
 .rose__petal--outer-1,
 .rose__petal--outer-2,
 .rose__petal--outer-3,
 .rose__petal--outer-4 {
-  width: 55%;
+  width: 60%;
   height: 55%;
-  background: linear-gradient(135deg, #7a1525, #8b1a2b);
-  opacity: 0.75;
+  background: linear-gradient(160deg, #f9b0bf 0%, #f48da0 50%, #eb7a90 100%);
+  box-shadow: inset 0 -2px 6px rgba(200, 80, 100, 0.15);
 }
-.rose__petal--outer-1 { top: 5%; left: 0; transform: rotate(-30deg); }
-.rose__petal--outer-2 { top: 5%; right: 0; transform: rotate(60deg) scaleX(-1); }
-.rose__petal--outer-3 { top: 15%; left: -5%; transform: rotate(-60deg); opacity: 0.65; }
-.rose__petal--outer-4 { top: 15%; right: -5%; transform: rotate(90deg) scaleX(-1); opacity: 0.65; }
 
-/* Mid petals */
+.rose__petal--outer-1 { top: 10%; left: 5%; transform: rotate(-35deg); opacity: 0.85; }
+.rose__petal--outer-2 { top: 8%; right: 5%; transform: rotate(35deg) scaleX(-1); opacity: 0.85; }
+.rose__petal--outer-3 { top: 18%; left: -2%; transform: rotate(-65deg); opacity: 0.7; }
+.rose__petal--outer-4 { top: 18%; right: -2%; transform: rotate(65deg) scaleX(-1); opacity: 0.7; }
+
+/* Mid petals — medium, cupping inward */
 .rose__petal--mid-1,
 .rose__petal--mid-2,
 .rose__petal--mid-3 {
-  width: 48%;
+  width: 50%;
   height: 48%;
-  background: linear-gradient(135deg, #b22840, #c03050);
-  opacity: 0.85;
+  background: linear-gradient(160deg, #fcc0cc 0%, #f8a5b5 50%, #f290a4 100%);
+  box-shadow: inset 0 -1px 4px rgba(200, 80, 100, 0.1);
 }
-.rose__petal--mid-1 { top: 12%; left: 8%; transform: rotate(-15deg); }
-.rose__petal--mid-2 { top: 12%; right: 8%; transform: rotate(45deg) scaleX(-1); }
-.rose__petal--mid-3 { top: 20%; left: 15%; transform: rotate(-45deg); opacity: 0.75; }
 
-/* Inner petals */
+.rose__petal--mid-1 { top: 15%; left: 12%; transform: rotate(-18deg); opacity: 0.9; }
+.rose__petal--mid-2 { top: 14%; right: 12%; transform: rotate(20deg) scaleX(-1); opacity: 0.9; }
+.rose__petal--mid-3 { top: 22%; left: 20%; transform: rotate(-40deg); opacity: 0.8; }
+
+/* Inner petals — small, tight */
 .rose__petal--inner-1,
 .rose__petal--inner-2 {
-  width: 38%;
-  height: 38%;
-  background: linear-gradient(135deg, #d44060, #e05575);
-  opacity: 0.9;
+  width: 40%;
+  height: 40%;
+  background: linear-gradient(160deg, #fdd5dc 0%, #f9bcc8 50%, #f5a8b8 100%);
+  box-shadow: inset 0 -1px 3px rgba(200, 80, 100, 0.08);
 }
-.rose__petal--inner-1 { top: 18%; left: 18%; transform: rotate(-5deg); }
-.rose__petal--inner-2 { top: 18%; right: 18%; transform: rotate(30deg) scaleX(-1); }
 
-/* Center */
+.rose__petal--inner-1 { top: 22%; left: 20%; transform: rotate(-8deg); opacity: 0.95; }
+.rose__petal--inner-2 { top: 20%; right: 20%; transform: rotate(12deg) scaleX(-1); opacity: 0.95; }
+
+/* Center bud */
 .rose__petal--center {
-  width: 22%;
+  width: 20%;
   height: 18%;
-  top: 28%;
-  left: 39%;
-  background: radial-gradient(ellipse, #f0809a, #e86080);
+  top: 30%;
+  left: 40%;
+  background: radial-gradient(ellipse, #fde0e6, #f9ccd5);
   border-radius: 50%;
-  opacity: 0.9;
+  opacity: 0.95;
+  box-shadow: inset 0 0 4px rgba(200, 100, 120, 0.1);
 }
 
-/* ── Sway animation ────────────────────────────────────── */
+/* ── Sway ──────────────────────────────────────────────── */
 .rose--1 { animation: sway1 5s ease-in-out 5s infinite; }
 .rose--2 { animation: sway2 6s ease-in-out 5.5s infinite; }
 .rose--3 { animation: sway3 5.5s ease-in-out 5.2s infinite; }
 
 @keyframes sway1 {
   0%, 100% { transform: translateX(-50%) rotate(0deg); }
-  50% { transform: translateX(-50%) rotate(2deg); }
+  50% { transform: translateX(-50%) rotate(2.5deg); }
 }
 @keyframes sway2 {
-  0%, 100% { transform: translateX(-50%) rotate(-12deg); }
-  50% { transform: translateX(-50%) rotate(-9deg); }
+  0%, 100% { transform: translateX(-50%) rotate(-10deg); }
+  50% { transform: translateX(-50%) rotate(-7deg); }
 }
 @keyframes sway3 {
-  0%, 100% { transform: translateX(-50%) rotate(10deg); }
-  50% { transform: translateX(-50%) rotate(13deg); }
+  0%, 100% { transform: translateX(-50%) rotate(8deg); }
+  50% { transform: translateX(-50%) rotate(11deg); }
 }
 
-/* ── Firefly lights ────────────────────────────────────── */
+/* ── Sparkle lights ────────────────────────────────────── */
 .rose__lights {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 10vmin;
-  height: 10vmin;
+  width: 12vmin;
+  height: 12vmin;
 }
 
 .rose--1 .rose__lights { bottom: 48vmin; }
@@ -276,27 +338,27 @@ body {
 
 .light {
   position: absolute;
-  width: 0.6vmin;
-  height: 0.6vmin;
+  width: 0.5vmin;
+  height: 0.5vmin;
   border-radius: 50%;
-  background: rgba(255, 200, 180, 0.8);
-  box-shadow: 0 0 1vmin 0.3vmin rgba(255, 180, 160, 0.3);
+  background: rgba(255, 220, 200, 0.9);
+  box-shadow: 0 0 0.8vmin 0.2vmin rgba(255, 200, 180, 0.4);
   opacity: 0;
-  animation: firefly 4.5s ease-in-out infinite;
+  animation: sparkleUp 5s ease-in-out infinite;
 }
 
-.light--1 { left: 30%; animation-delay: 4s; }
-.light--2 { left: 60%; animation-delay: 4.5s; }
-.light--3 { left: 45%; animation-delay: 5s; }
-.light--4 { left: 20%; animation-delay: 5.5s; }
-.light--5 { left: 70%; animation-delay: 4.8s; }
-.light--6 { left: 50%; animation-delay: 5.3s; }
+.light--1 { left: 25%; animation-delay: 4s; }
+.light--2 { left: 55%; animation-delay: 4.6s; }
+.light--3 { left: 40%; animation-delay: 5.2s; }
+.light--4 { left: 15%; animation-delay: 5.8s; }
+.light--5 { left: 70%; animation-delay: 4.9s; }
+.light--6 { left: 48%; animation-delay: 5.5s; }
 
-@keyframes firefly {
-  0% { opacity: 0; transform: translateY(0) translateX(0); }
-  20% { opacity: 0.8; }
-  80% { opacity: 0.4; }
-  100% { opacity: 0; transform: translateY(-20vmin) translateX(3vmin); filter: blur(1px); }
+@keyframes sparkleUp {
+  0% { opacity: 0; transform: translateY(0); }
+  15% { opacity: 0.8; }
+  85% { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(-18vmin) translateX(2vmin); }
 }
 
 /* ── Grass ─────────────────────────────────────────────── */
@@ -305,27 +367,27 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 8vmin;
+  height: 10vmin;
 }
 
 .grass__blade {
   position: absolute;
   bottom: 0;
-  width: 0.4vmin;
-  background: linear-gradient(to top, #1a5a20, #0e3a12);
+  width: 0.5vmin;
+  background: linear-gradient(to top, #7cc96e, #a5dc9a);
   border-radius: 50% 50% 0 0;
   transform-origin: bottom center;
   transform: scaleY(0);
 }
 
-.grass__blade--1 { left: 10%; height: 6vmin; animation: grassGrow 1s ease 2s forwards, grassSway 2.5s ease-in-out 3s infinite; }
-.grass__blade--2 { left: 20%; height: 4vmin; animation: grassGrow 1s ease 2.2s forwards, grassSway 3s ease-in-out 3.2s infinite; }
-.grass__blade--3 { left: 35%; height: 5vmin; animation: grassGrow 1s ease 2.1s forwards, grassSway 2.8s ease-in-out 3.1s infinite; }
-.grass__blade--4 { left: 45%; height: 3.5vmin; animation: grassGrow 1s ease 2.4s forwards, grassSway 2.3s ease-in-out 3.4s infinite; }
-.grass__blade--5 { left: 55%; height: 5.5vmin; animation: grassGrow 1s ease 2.15s forwards, grassSway 2.6s ease-in-out 3.15s infinite; }
-.grass__blade--6 { left: 65%; height: 4.5vmin; animation: grassGrow 1s ease 2.3s forwards, grassSway 2.9s ease-in-out 3.3s infinite; }
-.grass__blade--7 { left: 78%; height: 5vmin; animation: grassGrow 1s ease 2.05s forwards, grassSway 2.7s ease-in-out 3.05s infinite; }
-.grass__blade--8 { left: 90%; height: 3vmin; animation: grassGrow 1s ease 2.5s forwards, grassSway 2.4s ease-in-out 3.5s infinite; }
+.grass__blade--1 { left: 8%;  height: 7vmin; animation: grassGrow 1s ease 2s forwards,    grassSway 2.5s ease-in-out 3s infinite; }
+.grass__blade--2 { left: 18%; height: 5vmin; animation: grassGrow 1s ease 2.2s forwards,  grassSway 3s ease-in-out 3.2s infinite; }
+.grass__blade--3 { left: 32%; height: 6vmin; animation: grassGrow 1s ease 2.1s forwards,  grassSway 2.8s ease-in-out 3.1s infinite; }
+.grass__blade--4 { left: 42%; height: 4vmin; animation: grassGrow 1s ease 2.4s forwards,  grassSway 2.3s ease-in-out 3.4s infinite; }
+.grass__blade--5 { left: 55%; height: 6.5vmin; animation: grassGrow 1s ease 2.15s forwards, grassSway 2.6s ease-in-out 3.15s infinite; }
+.grass__blade--6 { left: 65%; height: 5.5vmin; animation: grassGrow 1s ease 2.3s forwards, grassSway 2.9s ease-in-out 3.3s infinite; }
+.grass__blade--7 { left: 78%; height: 6vmin; animation: grassGrow 1s ease 2.05s forwards,  grassSway 2.7s ease-in-out 3.05s infinite; }
+.grass__blade--8 { left: 92%; height: 4vmin; animation: grassGrow 1s ease 2.5s forwards,  grassSway 2.4s ease-in-out 3.5s infinite; }
 
 @keyframes grassGrow {
   from { transform: scaleY(0); }
@@ -334,7 +396,20 @@ body {
 
 @keyframes grassSway {
   0%, 100% { transform: scaleY(1) rotate(0deg); }
-  50% { transform: scaleY(1) rotate(2deg); }
+  50% { transform: scaleY(1) rotate(2.5deg); }
+}
+
+/* ── Ground gradient ───────────────────────────────────── */
+.garden::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  right: -10%;
+  height: 6vmin;
+  background: linear-gradient(to top, #d4ebc8, transparent);
+  border-radius: 50%;
+  z-index: -1;
 }
 
 /* ── Sections ──────────────────────────────────────────── */
@@ -358,7 +433,7 @@ body {
 .section h2 {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
-  color: #b88080;
+  color: #c06b7e;
   margin-bottom: 2rem;
   font-weight: 400;
 }
@@ -366,7 +441,7 @@ body {
 .section p, .section__desc {
   font-size: 1rem;
   line-height: 2;
-  color: #8a6a6a;
+  color: #8a7070;
   max-width: 500px;
   margin: 0 auto;
 }
@@ -374,7 +449,17 @@ body {
 .section__desc {
   font-weight: 300;
   font-size: 0.9rem;
-  color: #6a5050;
+  color: #b0999e;
+}
+
+/* Soft divider between sections */
+.section + .section::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e0c0c8, transparent);
+  margin: 0 auto 3rem;
 }
 
 /* ── Poem ──────────────────────────────────────────────── */
@@ -388,7 +473,7 @@ body {
   font-weight: 300;
   font-size: 1.05rem;
   line-height: 2.4;
-  color: #9a7a7a;
+  color: #8a7070;
   opacity: 0;
   transform: translateY(8px);
   transition: all 1s ease;
@@ -419,7 +504,7 @@ body {
 .mini-flower__stem {
   width: 2px;
   height: 35px;
-  background: linear-gradient(to top, #2a5a18, #3a7a28);
+  background: linear-gradient(to top, #7cc96e, #a0d898);
   margin: 0 auto;
   border-radius: 1px;
 }
@@ -427,21 +512,22 @@ body {
 .mini-flower__head {
   width: 22px;
   height: 22px;
-  border-radius: 50% 0 50% 50%;
+  border-radius: 50%;
   margin: 0 auto -2px;
   transition: filter 0.5s ease, transform 0.5s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .mini-flower:hover .mini-flower__head {
-  filter: drop-shadow(0 0 8px rgba(200, 50, 70, 0.3));
-  transform: scale(1.1);
+  filter: brightness(1.1);
+  transform: scale(1.15);
 }
 
-.mini-flower__head--red { background: radial-gradient(circle at 40% 40%, #e05575, #a82238); }
-.mini-flower__head--gold { background: radial-gradient(circle at 40% 40%, #e8c080, #c09050); }
-.mini-flower__head--white { background: radial-gradient(circle at 40% 40%, #f5f0f0, #d8d0d0); }
-.mini-flower__head--purple { background: radial-gradient(circle at 40% 40%, #b070d0, #7040a0); }
-.mini-flower__head--pink { background: radial-gradient(circle at 40% 40%, #f08090, #d04060); }
+.mini-flower__head--red    { background: radial-gradient(circle at 40% 35%, #fbb, #f48da0); }
+.mini-flower__head--gold   { background: radial-gradient(circle at 40% 35%, #fde8b0, #f0cc70); }
+.mini-flower__head--white  { background: radial-gradient(circle at 40% 35%, #fff, #f0eaec); }
+.mini-flower__head--purple { background: radial-gradient(circle at 40% 35%, #e0c0f0, #c898e0); }
+.mini-flower__head--pink   { background: radial-gradient(circle at 40% 35%, #fcc0d0, #f5a0b5); }
 
 .mini-flower__msg {
   position: absolute;
@@ -452,7 +538,7 @@ body {
   font-family: 'Sora', sans-serif;
   font-weight: 300;
   font-size: 0.8rem;
-  color: #a08080;
+  color: #b08a90;
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -483,7 +569,7 @@ body {
   width: 25px;
   height: 40px;
   border-radius: 25px 25px 0 0;
-  background: linear-gradient(to bottom, #c03050, #a02040);
+  background: linear-gradient(to bottom, #f8a5b5, #f08a9e);
 }
 
 .heart__shape::before {
@@ -500,12 +586,12 @@ body {
 
 .heart:hover .heart__shape::before,
 .heart:hover .heart__shape::after {
-  filter: drop-shadow(0 0 10px rgba(200, 40, 60, 0.4));
+  filter: brightness(1.1) drop-shadow(0 0 8px rgba(240, 130, 150, 0.3));
 }
 
 @keyframes gentleBeat {
   0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.05); }
+  15% { transform: scale(1.06); }
   30% { transform: scale(1); }
 }
 
@@ -513,7 +599,7 @@ body {
   margin-top: 1.2rem;
   font-weight: 300;
   font-size: 0.8rem;
-  color: #5a4040;
+  color: #c0a0a8;
 }
 
 .heart__counter {
@@ -521,7 +607,7 @@ body {
   font-family: 'Sora', sans-serif;
   font-weight: 300;
   font-size: 0.95rem;
-  color: #8a6060;
+  color: #c08090;
   opacity: 0;
   transition: opacity 0.8s ease;
 }
@@ -530,18 +616,19 @@ body {
 
 /* ── Letter ────────────────────────────────────────────── */
 .letter {
-  background: linear-gradient(135deg, rgba(20, 8, 10, 0.5), rgba(12, 4, 6, 0.6));
-  border: 1px solid rgba(120, 50, 50, 0.08);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(220, 180, 190, 0.3);
+  border-radius: 12px;
   padding: 2.5rem;
   max-width: 520px;
   margin: 2rem auto;
   text-align: left;
+  backdrop-filter: blur(4px);
 }
 
 .letter p {
   font-weight: 300;
-  color: #9a7a7a;
+  color: #7a6060;
   line-height: 2.2;
   font-size: 0.95rem;
   margin-bottom: 1.2rem;
@@ -557,8 +644,8 @@ body {
 
 .letter__sig {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.5rem;
-  color: #a07070;
+  font-size: 1.4rem;
+  color: #c07080;
   text-align: right;
   margin-top: 1.5rem;
   opacity: 0;
@@ -575,7 +662,7 @@ body {
 footer {
   text-align: center;
   padding: 3rem 2rem;
-  color: #2a1515;
+  color: #d0b8be;
   font-size: 0.75rem;
   letter-spacing: 2px;
   position: relative;
@@ -589,4 +676,5 @@ footer {
   .letter { padding: 2rem 1.5rem; }
   .section { padding: 3.5rem 1.5rem; }
   .hero__text { top: 5vh; }
+  .cloud { display: none; }
 }
