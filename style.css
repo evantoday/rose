@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&family=Lora:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;600&display=swap');
 
 /* ── Reset ─────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   background: #000;
   color: #e0c8c8;
-  font-family: 'Lora', serif;
+  font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
 
@@ -51,7 +51,7 @@ body {
 }
 
 .hero__text h1 {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'DM Serif Display', serif;
   font-size: clamp(2.5rem, 7vw, 5rem);
   color: #d4a0a0;
   font-weight: 400;
@@ -59,8 +59,8 @@ body {
 }
 
 .hero__sub {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
   font-size: clamp(0.85rem, 2vw, 1.1rem);
   color: #7a5555;
   margin-top: 0.8rem;
@@ -356,7 +356,7 @@ body {
 }
 
 .section h2 {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'DM Serif Display', serif;
   font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   color: #b88080;
   margin-bottom: 2rem;
@@ -372,7 +372,7 @@ body {
 }
 
 .section__desc {
-  font-style: italic;
+  font-weight: 300;
   font-size: 0.9rem;
   color: #6a5050;
 }
@@ -384,8 +384,8 @@ body {
 }
 
 .poem-lines li {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
   font-size: 1.05rem;
   line-height: 2.4;
   color: #9a7a7a;
@@ -449,8 +449,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
   font-size: 0.8rem;
   color: #a08080;
   opacity: 0;
@@ -511,15 +511,15 @@ body {
 
 .heart__hint {
   margin-top: 1.2rem;
-  font-style: italic;
+  font-weight: 300;
   font-size: 0.8rem;
   color: #5a4040;
 }
 
 .heart__counter {
   margin-top: 0.8rem;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
   font-size: 0.95rem;
   color: #8a6060;
   opacity: 0;
@@ -540,7 +540,7 @@ body {
 }
 
 .letter p {
-  font-style: italic;
+  font-weight: 300;
   color: #9a7a7a;
   line-height: 2.2;
   font-size: 0.95rem;
@@ -556,7 +556,7 @@ body {
 }
 
 .letter__sig {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'DM Serif Display', serif;
   font-size: 1.5rem;
   color: #a07070;
   text-align: right;
