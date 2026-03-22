@@ -6,169 +6,198 @@
   <title>For You</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="loading">
 
-  <!-- Background canvases -->
-  <canvas id="particles-canvas"></canvas>
-  <canvas id="petals-canvas"></canvas>
-  <div class="ambient-glow"></div>
-
-  <!-- Music toggle -->
-  <button class="music-toggle" aria-label="Toggle ambient music">
-    <div class="bars">
-      <div class="bar" style="height:6px;"></div>
-      <div class="bar" style="height:10px;"></div>
-      <div class="bar" style="height:14px;"></div>
-      <div class="bar" style="height:8px;"></div>
-    </div>
-  </button>
-
-  <!-- Hero Section -->
+  <!-- Hero: Growing Rose Garden -->
   <section class="hero">
-    <canvas id="rose-draw-canvas" width="240" height="220"></canvas>
-    <h1 data-parallax="-0.05">You Are Not Alone</h1>
-    <p class="subtitle">this one's for you — take your time</p>
+    <div class="night"></div>
+
+    <div class="garden">
+      <!-- Rose 1 (center) -->
+      <div class="rose rose--1">
+        <div class="rose__stem"></div>
+        <div class="rose__leaf rose__leaf--left"></div>
+        <div class="rose__leaf rose__leaf--right"></div>
+        <div class="rose__bloom">
+          <div class="rose__petal rose__petal--outer-1"></div>
+          <div class="rose__petal rose__petal--outer-2"></div>
+          <div class="rose__petal rose__petal--outer-3"></div>
+          <div class="rose__petal rose__petal--outer-4"></div>
+          <div class="rose__petal rose__petal--mid-1"></div>
+          <div class="rose__petal rose__petal--mid-2"></div>
+          <div class="rose__petal rose__petal--mid-3"></div>
+          <div class="rose__petal rose__petal--inner-1"></div>
+          <div class="rose__petal rose__petal--inner-2"></div>
+          <div class="rose__petal rose__petal--center"></div>
+        </div>
+        <div class="rose__lights">
+          <div class="light light--1"></div>
+          <div class="light light--2"></div>
+          <div class="light light--3"></div>
+          <div class="light light--4"></div>
+          <div class="light light--5"></div>
+          <div class="light light--6"></div>
+        </div>
+      </div>
+
+      <!-- Rose 2 (left) -->
+      <div class="rose rose--2">
+        <div class="rose__stem"></div>
+        <div class="rose__leaf rose__leaf--left"></div>
+        <div class="rose__leaf rose__leaf--right"></div>
+        <div class="rose__bloom">
+          <div class="rose__petal rose__petal--outer-1"></div>
+          <div class="rose__petal rose__petal--outer-2"></div>
+          <div class="rose__petal rose__petal--outer-3"></div>
+          <div class="rose__petal rose__petal--mid-1"></div>
+          <div class="rose__petal rose__petal--mid-2"></div>
+          <div class="rose__petal rose__petal--inner-1"></div>
+          <div class="rose__petal rose__petal--inner-2"></div>
+          <div class="rose__petal rose__petal--center"></div>
+        </div>
+        <div class="rose__lights">
+          <div class="light light--1"></div>
+          <div class="light light--2"></div>
+          <div class="light light--3"></div>
+          <div class="light light--4"></div>
+        </div>
+      </div>
+
+      <!-- Rose 3 (right) -->
+      <div class="rose rose--3">
+        <div class="rose__stem"></div>
+        <div class="rose__leaf rose__leaf--left"></div>
+        <div class="rose__leaf rose__leaf--right"></div>
+        <div class="rose__bloom">
+          <div class="rose__petal rose__petal--outer-1"></div>
+          <div class="rose__petal rose__petal--outer-2"></div>
+          <div class="rose__petal rose__petal--outer-3"></div>
+          <div class="rose__petal rose__petal--mid-1"></div>
+          <div class="rose__petal rose__petal--mid-2"></div>
+          <div class="rose__petal rose__petal--inner-1"></div>
+          <div class="rose__petal rose__petal--center"></div>
+        </div>
+        <div class="rose__lights">
+          <div class="light light--1"></div>
+          <div class="light light--2"></div>
+          <div class="light light--3"></div>
+          <div class="light light--4"></div>
+          <div class="light light--5"></div>
+        </div>
+      </div>
+
+      <!-- Ground grass -->
+      <div class="grass">
+        <div class="grass__blade grass__blade--1"></div>
+        <div class="grass__blade grass__blade--2"></div>
+        <div class="grass__blade grass__blade--3"></div>
+        <div class="grass__blade grass__blade--4"></div>
+        <div class="grass__blade grass__blade--5"></div>
+        <div class="grass__blade grass__blade--6"></div>
+        <div class="grass__blade grass__blade--7"></div>
+        <div class="grass__blade grass__blade--8"></div>
+      </div>
+    </div>
+
+    <div class="hero__text">
+      <h1>You Are Not Alone</h1>
+      <p class="hero__sub">this one's for you</p>
+    </div>
+
     <div class="scroll-hint">
-      scroll down
-      <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
-        <path d="M2 2L10 10L18 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
+      <span>scroll</span>
+      <div class="scroll-hint__arrow"></div>
     </div>
   </section>
 
-  <!-- Poem Section -->
-  <div class="divider"></div>
+  <!-- Poem -->
   <section class="section" id="poem">
     <h2>When The Night Feels Heavy</h2>
     <ul class="poem-lines">
-      <li>Aku tau kamu lagi ngebawa beban yang berat banget,</li>
-      <li>dan mungkin rasanya kayak sendirian.</li>
-      <li>Tapi aku mau kamu tau —</li>
-      <li>kamu nggak sendirian.</li>
+      <li>I know you're carrying something heavy right now,</li>
+      <li>and maybe it feels like you're all on your own.</li>
+      <li>But I need you to know —</li>
+      <li>you're not alone.</li>
       <li>&nbsp;</li>
-      <li>Kamu boleh capek. Kamu boleh nangis.</li>
-      <li>Kamu boleh nggak kuat sesekali.</li>
-      <li>Itu bukan berarti kamu lemah.</li>
-      <li>Itu artinya kamu manusia — dan kamu luar biasa.</li>
+      <li>It's okay to be tired. It's okay to cry.</li>
+      <li>It's okay to not be strong all the time.</li>
+      <li>That doesn't make you weak.</li>
+      <li>It makes you human — and you're incredible.</li>
     </ul>
   </section>
 
-  <!-- Garden Section -->
-  <div class="divider"></div>
-  <section class="section" id="garden">
+  <!-- Flowers with messages -->
+  <section class="section" id="garden-msg">
     <h2>These Are for You</h2>
-    <p>Each flower carries a reminder — hover to read.</p>
-    <div class="garden">
-      <div class="garden-rose">
-        <svg width="70" height="90" viewBox="0 0 70 90">
-          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
-          <path d="M35 55 Q15 35 20 18 Q25 30 35 42" fill="#c03050"/>
-          <path d="M35 55 Q55 35 50 18 Q45 30 35 42" fill="#d44060"/>
-          <path d="M35 50 Q25 32 28 20 Q30 30 35 38" fill="#e05575"/>
-          <path d="M35 50 Q45 32 42 20 Q40 30 35 38" fill="#e86080"/>
-          <ellipse cx="35" cy="30" rx="5" ry="4" fill="#f0809a"/>
-        </svg>
-        <span class="rose-msg">Kamu kuat</span>
+    <p class="section__desc">hover each flower</p>
+    <div class="mini-garden">
+      <div class="mini-flower">
+        <div class="mini-flower__head mini-flower__head--red"></div>
+        <div class="mini-flower__stem"></div>
+        <span class="mini-flower__msg">You are strong</span>
       </div>
-      <div class="garden-rose">
-        <svg width="70" height="90" viewBox="0 0 70 90">
-          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
-          <path d="M35 55 Q10 30 18 12 Q22 28 35 40" fill="#d4a060"/>
-          <path d="M35 55 Q60 30 52 12 Q48 28 35 40" fill="#e0b070"/>
-          <path d="M35 48 Q22 28 26 15 Q28 26 35 36" fill="#e8c080"/>
-          <path d="M35 48 Q48 28 44 15 Q42 26 35 36" fill="#f0d090"/>
-          <ellipse cx="35" cy="28" rx="5" ry="4" fill="#f8e0a0"/>
-        </svg>
-        <span class="rose-msg">Kamu nggak sendirian</span>
+      <div class="mini-flower">
+        <div class="mini-flower__head mini-flower__head--gold"></div>
+        <div class="mini-flower__stem"></div>
+        <span class="mini-flower__msg">You're not alone</span>
       </div>
-      <div class="garden-rose">
-        <svg width="70" height="90" viewBox="0 0 70 90">
-          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
-          <path d="M35 55 Q12 32 18 14 Q23 28 35 42" fill="#e8e8e8"/>
-          <path d="M35 55 Q58 32 52 14 Q47 28 35 42" fill="#f0f0f0"/>
-          <path d="M35 48 Q22 28 26 16 Q28 26 35 38" fill="#f5f0f0"/>
-          <path d="M35 48 Q48 28 44 16 Q42 26 35 38" fill="#faf5f5"/>
-          <ellipse cx="35" cy="28" rx="5" ry="4" fill="#fff"/>
-        </svg>
-        <span class="rose-msg">Ada yang peduli sama kamu</span>
+      <div class="mini-flower">
+        <div class="mini-flower__head mini-flower__head--white"></div>
+        <div class="mini-flower__stem"></div>
+        <span class="mini-flower__msg">Someone cares about you</span>
       </div>
-      <div class="garden-rose">
-        <svg width="70" height="90" viewBox="0 0 70 90">
-          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
-          <path d="M35 55 Q12 32 18 14 Q23 28 35 42" fill="#8040a0"/>
-          <path d="M35 55 Q58 32 52 14 Q47 28 35 42" fill="#9050b0"/>
-          <path d="M35 48 Q22 28 26 16 Q28 26 35 38" fill="#a060c0"/>
-          <path d="M35 48 Q48 28 44 16 Q42 26 35 38" fill="#b070d0"/>
-          <ellipse cx="35" cy="28" rx="5" ry="4" fill="#c090e0"/>
-        </svg>
-        <span class="rose-msg">Boleh istirahat dulu</span>
+      <div class="mini-flower">
+        <div class="mini-flower__head mini-flower__head--purple"></div>
+        <div class="mini-flower__stem"></div>
+        <span class="mini-flower__msg">It's okay to rest</span>
       </div>
-      <div class="garden-rose">
-        <svg width="70" height="90" viewBox="0 0 70 90">
-          <path d="M35 90 Q34 70 35 55" stroke="#2d5a1e" stroke-width="2" fill="none"/>
-          <path d="M35 55 Q12 32 18 14 Q23 28 35 42" fill="#d03050"/>
-          <path d="M35 55 Q58 32 52 14 Q47 28 35 42" fill="#e04060"/>
-          <path d="M35 48 Q22 28 26 16 Q28 26 35 38" fill="#e85575"/>
-          <path d="M35 48 Q48 28 44 16 Q42 26 35 38" fill="#f06585"/>
-          <ellipse cx="35" cy="28" rx="5" ry="4" fill="#f8809a"/>
-        </svg>
-        <span class="rose-msg">Aku selalu di sini</span>
+      <div class="mini-flower">
+        <div class="mini-flower__head mini-flower__head--pink"></div>
+        <div class="mini-flower__stem"></div>
+        <span class="mini-flower__msg">I'm always here</span>
       </div>
     </div>
   </section>
 
-  <!-- Heart Section -->
-  <div class="divider"></div>
-  <section class="section heart-section" id="heart">
+  <!-- Heart -->
+  <section class="section section--heart" id="heart">
     <h2>Sending You Strength</h2>
-    <svg class="heart-svg" width="120" height="110" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#e04060"/>
-          <stop offset="100%" stop-color="#c02040"/>
-        </linearGradient>
-      </defs>
-      <path d="M60 100 C60 100 5 65 5 30 C5 10 25 0 40 0 C50 0 58 8 60 15 C62 8 70 0 80 0 C95 0 115 10 115 30 C115 65 60 100 60 100Z" fill="url(#heartGrad)"/>
-      <path d="M60 100 C60 100 5 65 5 30 C5 10 25 0 40 0 C50 0 58 8 60 15" fill="rgba(255,255,255,0.08)"/>
-    </svg>
-    <p style="margin-top: 1.5rem; color: #8a5a5a; font-size: 0.9rem;">tap to send a prayer</p>
-    <div class="love-counter"></div>
+    <div class="heart" id="heartBtn">
+      <div class="heart__shape"></div>
+    </div>
+    <p class="heart__hint">tap to send a prayer</p>
+    <div class="heart__counter" id="heartCounter"></div>
   </section>
 
-  <!-- Letter Section -->
-  <div class="divider"></div>
+  <!-- Letter -->
   <section class="section" id="letter">
     <h2>A Letter for You</h2>
     <div class="letter">
       <p>
-        Aku nggak bisa pura-pura ngerti sepenuhnya apa yang kamu rasain sekarang.
-        Aku nggak akan bilang "semuanya bakal baik-baik aja" — karena aku tau
-        kamu butuh yang lebih dari sekedar kata-kata kosong.
+        I can't pretend to fully understand what you're feeling right now.
+        I won't say "everything's gonna be fine" — because I know
+        you need more than just empty words.
       </p>
-      <p style="margin-top: 1.5rem;">
-        Tapi yang bisa aku janjiin — aku di sini.
-        Mau jam berapa pun, mau kamu mau cerita atau cuma diem aja,
-        aku nggak akan kemana-mana.
+      <p>
+        But what I can promise you — I'm here.
+        Any hour, whether you want to talk or just sit in silence,
+        I'm not going anywhere.
       </p>
-      <p style="margin-top: 1.5rem;">
-        Bapakmu orang yang kuat — dan sekarang aku tau dari mana kamu dapet kekuatan itu.
-        Kita doain bareng ya. Aku percaya dia bisa lewatin ini.
-        Dan kamu juga.
+      <p>
+        Your father is a strong man — and now I know where you get
+        that strength from.
+        Let's pray together. I believe he can get through this.
+        And so can you.
       </p>
-      <p style="margin-top: 1.5rem;">
-        Kalau dunia lagi berat, sandaranlah.
-        Aku nggak akan gerak.
+      <p>
+        When the world feels too heavy, lean on me.
+        I won't move.
       </p>
-      <div class="signature">Selalu ada, Van</div>
+      <div class="letter__sig">Always here, Van</div>
     </div>
   </section>
 
-  <footer>
-    <svg width="20" height="18" viewBox="0 0 120 110" style="vertical-align: middle; margin-right: 6px;">
-      <path d="M60 100 C60 100 5 65 5 30 C5 10 25 0 40 0 C50 0 58 8 60 15 C62 8 70 0 80 0 C95 0 115 10 115 30 C115 65 60 100 60 100Z" fill="#5a2030"/>
-    </svg>
-    made with care
-  </footer>
+  <footer>made with care</footer>
 
   <script src="app.js"></script>
 </body>
