@@ -8,7 +8,7 @@
 </head>
 <body class="loading">
 
-  <!-- Hero: Growing Rose Garden -->
+  <!-- Hero -->
   <section class="hero">
     <div class="sky"></div>
     <div class="cloud cloud--1"></div>
@@ -16,22 +16,35 @@
     <div class="cloud cloud--3"></div>
 
     <div class="garden">
-      <!-- Rose 1 (center) -->
+      <!-- Rose 1 (center, tallest) -->
       <div class="rose rose--1">
         <div class="rose__stem"></div>
         <div class="rose__leaf rose__leaf--left"></div>
         <div class="rose__leaf rose__leaf--right"></div>
         <div class="rose__bloom">
-          <div class="rose__petal rose__petal--outer-1"></div>
-          <div class="rose__petal rose__petal--outer-2"></div>
-          <div class="rose__petal rose__petal--outer-3"></div>
-          <div class="rose__petal rose__petal--outer-4"></div>
-          <div class="rose__petal rose__petal--mid-1"></div>
-          <div class="rose__petal rose__petal--mid-2"></div>
-          <div class="rose__petal rose__petal--mid-3"></div>
-          <div class="rose__petal rose__petal--inner-1"></div>
-          <div class="rose__petal rose__petal--inner-2"></div>
-          <div class="rose__petal rose__petal--center"></div>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer petals -->
+            <path d="M50 85 Q20 65 15 40 Q25 55 50 65" fill="#f48da0" opacity="0.7"/>
+            <path d="M50 85 Q80 65 85 40 Q75 55 50 65" fill="#f7a0b0" opacity="0.7"/>
+            <path d="M50 85 Q10 75 8 50 Q20 65 50 72" fill="#ef8494" opacity="0.6"/>
+            <path d="M50 85 Q90 75 92 50 Q80 65 50 72" fill="#ef8494" opacity="0.6"/>
+            <path d="M50 85 Q25 55 30 30 Q35 48 50 60" fill="#f297a8" opacity="0.65"/>
+            <!-- Mid petals -->
+            <path d="M50 78 Q28 58 30 35 Q36 50 50 60" fill="#f9b0bf" opacity="0.8"/>
+            <path d="M50 78 Q72 58 70 35 Q64 50 50 60" fill="#fbbcc8" opacity="0.8"/>
+            <path d="M50 78 Q35 55 38 33 Q42 48 50 56" fill="#f8a8b8" opacity="0.78"/>
+            <path d="M50 78 Q65 55 62 33 Q58 48 50 56" fill="#f8a8b8" opacity="0.78"/>
+            <!-- Inner petals -->
+            <path d="M50 70 Q36 52 40 35 Q44 48 50 55" fill="#fcc5d0" opacity="0.88"/>
+            <path d="M50 70 Q64 52 60 35 Q56 48 50 55" fill="#fdd0d8" opacity="0.88"/>
+            <path d="M50 68 Q40 50 44 38 Q46 48 50 52" fill="#fdd8e0" opacity="0.92"/>
+            <path d="M50 68 Q60 50 56 38 Q54 48 50 52" fill="#fdd8e0" opacity="0.92"/>
+            <!-- Center spiral -->
+            <path d="M50 60 Q44 48 47 40 Q48 48 50 52" fill="#fee5ea" opacity="0.95"/>
+            <path d="M50 60 Q56 48 53 40 Q52 48 50 52" fill="#fee5ea" opacity="0.95"/>
+            <ellipse cx="50" cy="45" rx="5" ry="4" fill="#feeef2" opacity="0.9"/>
+            <ellipse cx="50" cy="45" rx="2.5" ry="2" fill="#fff5f7" opacity="0.85"/>
+          </svg>
         </div>
         <div class="rose__lights">
           <div class="light light--1"></div>
@@ -39,7 +52,6 @@
           <div class="light light--3"></div>
           <div class="light light--4"></div>
           <div class="light light--5"></div>
-          <div class="light light--6"></div>
         </div>
       </div>
 
@@ -49,20 +61,24 @@
         <div class="rose__leaf rose__leaf--left"></div>
         <div class="rose__leaf rose__leaf--right"></div>
         <div class="rose__bloom">
-          <div class="rose__petal rose__petal--outer-1"></div>
-          <div class="rose__petal rose__petal--outer-2"></div>
-          <div class="rose__petal rose__petal--outer-3"></div>
-          <div class="rose__petal rose__petal--mid-1"></div>
-          <div class="rose__petal rose__petal--mid-2"></div>
-          <div class="rose__petal rose__petal--inner-1"></div>
-          <div class="rose__petal rose__petal--inner-2"></div>
-          <div class="rose__petal rose__petal--center"></div>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 85 Q18 62 15 38 Q28 55 50 65" fill="#f48da0" opacity="0.7"/>
+            <path d="M50 85 Q82 62 85 38 Q72 55 50 65" fill="#f7a0b0" opacity="0.7"/>
+            <path d="M50 85 Q12 72 10 48 Q22 62 50 70" fill="#ef8494" opacity="0.6"/>
+            <path d="M50 85 Q88 72 90 48 Q78 62 50 70" fill="#ef8494" opacity="0.6"/>
+            <path d="M50 76 Q30 56 32 34 Q38 48 50 58" fill="#f9b0bf" opacity="0.8"/>
+            <path d="M50 76 Q70 56 68 34 Q62 48 50 58" fill="#fbbcc8" opacity="0.8"/>
+            <path d="M50 68 Q38 50 42 36 Q45 47 50 54" fill="#fcc5d0" opacity="0.88"/>
+            <path d="M50 68 Q62 50 58 36 Q55 47 50 54" fill="#fdd0d8" opacity="0.88"/>
+            <path d="M50 62 Q44 47 47 39 Q48 47 50 52" fill="#fee5ea" opacity="0.95"/>
+            <path d="M50 62 Q56 47 53 39 Q52 47 50 52" fill="#fee5ea" opacity="0.95"/>
+            <ellipse cx="50" cy="44" rx="4.5" ry="3.5" fill="#feeef2" opacity="0.9"/>
+          </svg>
         </div>
         <div class="rose__lights">
           <div class="light light--1"></div>
           <div class="light light--2"></div>
           <div class="light light--3"></div>
-          <div class="light light--4"></div>
         </div>
       </div>
 
@@ -72,20 +88,25 @@
         <div class="rose__leaf rose__leaf--left"></div>
         <div class="rose__leaf rose__leaf--right"></div>
         <div class="rose__bloom">
-          <div class="rose__petal rose__petal--outer-1"></div>
-          <div class="rose__petal rose__petal--outer-2"></div>
-          <div class="rose__petal rose__petal--outer-3"></div>
-          <div class="rose__petal rose__petal--mid-1"></div>
-          <div class="rose__petal rose__petal--mid-2"></div>
-          <div class="rose__petal rose__petal--inner-1"></div>
-          <div class="rose__petal rose__petal--center"></div>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 85 Q20 60 18 36 Q30 52 50 64" fill="#f7a0b0" opacity="0.7"/>
+            <path d="M50 85 Q80 60 82 36 Q70 52 50 64" fill="#f48da0" opacity="0.7"/>
+            <path d="M50 85 Q14 70 12 46 Q24 60 50 68" fill="#ef8494" opacity="0.6"/>
+            <path d="M50 85 Q86 70 88 46 Q76 60 50 68" fill="#ef8494" opacity="0.6"/>
+            <path d="M50 75 Q32 54 34 32 Q40 46 50 56" fill="#fbbcc8" opacity="0.8"/>
+            <path d="M50 75 Q68 54 66 32 Q60 46 50 56" fill="#f9b0bf" opacity="0.8"/>
+            <path d="M50 66 Q40 49 43 35 Q46 46 50 52" fill="#fdd0d8" opacity="0.88"/>
+            <path d="M50 66 Q60 49 57 35 Q54 46 50 52" fill="#fcc5d0" opacity="0.88"/>
+            <path d="M50 60 Q45 46 48 38 Q49 46 50 51" fill="#fee5ea" opacity="0.95"/>
+            <path d="M50 60 Q55 46 52 38 Q51 46 50 51" fill="#fee5ea" opacity="0.95"/>
+            <ellipse cx="50" cy="43" rx="4" ry="3.5" fill="#feeef2" opacity="0.9"/>
+          </svg>
         </div>
         <div class="rose__lights">
           <div class="light light--1"></div>
           <div class="light light--2"></div>
           <div class="light light--3"></div>
           <div class="light light--4"></div>
-          <div class="light light--5"></div>
         </div>
       </div>
 
@@ -119,13 +140,13 @@
     <ul class="poem-lines">
       <li>I know you're carrying something heavy right now,</li>
       <li>and maybe it feels like you're all on your own.</li>
-      <li>But I need you to know —</li>
+      <li>But I need you to know</li>
       <li>you're not alone.</li>
       <li>&nbsp;</li>
       <li>It's okay to be tired. It's okay to cry.</li>
       <li>It's okay to not be strong all the time.</li>
       <li>That doesn't make you weak.</li>
-      <li>It makes you human — and you're incredible.</li>
+      <li>It makes you human, and you're incredible.</li>
     </ul>
   </section>
 
@@ -177,24 +198,23 @@
     <h2>A Letter for You</h2>
     <div class="letter">
       <p>
-        I can't pretend to fully understand what you're feeling right now.
-        I won't say "everything's gonna be fine" — because I know
-        you need more than just empty words.
+        I'm not gonna pretend like I know exactly what you're going through right now.
+        And I'm not gonna hit you with some "everything happens for a reason" type thing
+        because honestly, you don't need that.
       </p>
       <p>
-        But what I can promise you — I'm here.
-        Any hour, whether you want to talk or just sit in silence,
+        What I can tell you is I'm here. Like actually here.
+        You wanna vent at 3am? Cool. You just wanna sit and not say anything? That's fine too.
         I'm not going anywhere.
       </p>
       <p>
-        Your father is a strong man — and now I know where you get
-        that strength from.
-        Let's pray together. I believe he can get through this.
-        And so can you.
+        Your dad is tough. Like seriously tough.
+        And honestly now I see where you get it from.
+        We'll get through this together, yeah? I really believe that.
       </p>
       <p>
-        When the world feels too heavy, lean on me.
-        I won't move.
+        Whenever it all gets too much, just lean on me.
+        I got you.
       </p>
       <div class="letter__sig">Always here, Van</div>
     </div>
