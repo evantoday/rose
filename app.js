@@ -360,8 +360,8 @@
     loveCount++;
     loveCounter.classList.add('show');
     loveCounter.textContent = loveCount === 1
-      ? '1 kiss sent'
-      : `${loveCount} kisses sent`;
+      ? '1 prayer sent'
+      : `${loveCount} prayers sent`;
 
     // Big burst
     burstPetals(e.clientX, e.clientY, 25);
