@@ -16,8 +16,8 @@
   --text-muted: #A89585;
   --cat-orange: #E8945A;
   --cat-dark: #D4803E;
-  --card-bg: rgba(255, 255, 255, 0.55);
-  --card-border: rgba(255, 255, 255, 0.6);
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(180, 200, 180, 0.4);
   --radius: 20px;
 }
 
@@ -436,15 +436,34 @@ body {
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
+/* ── Transition from garden to content ─────────────────── */
+.garden-transition {
+  position: relative;
+  height: 80px;
+  background: linear-gradient(to bottom, #388e3c, #5a8f5a, #8ab68a, #c8dcc0, #e8f0e4);
+  z-index: 1;
+}
+
 /* ── Sections ─────────────────────────────────────────── */
 .section {
   padding: 6rem 1.5rem;
   position: relative;
-  background: var(--cream);
 }
 
-.section:nth-child(even) {
-  background: linear-gradient(to bottom, #f5efe6, var(--cream));
+#poem {
+  background: linear-gradient(to bottom, #e8f0e4, #eef3e8, #f2f5ef);
+}
+
+#cards {
+  background: linear-gradient(to bottom, #f2f5ef, #f5f0eb, #f7efe8);
+}
+
+#heart {
+  background: linear-gradient(to bottom, #f7efe8, #faf0ea, #fdf3ee);
+}
+
+#letter {
+  background: linear-gradient(to bottom, #fdf3ee, #fef6f2, var(--cream));
 }
 
 .section__inner {
@@ -459,8 +478,8 @@ body {
   font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--pink-deep);
-  background: rgba(255, 182, 193, 0.2);
+  color: #6a8f6a;
+  background: rgba(106, 143, 106, 0.12);
   padding: 6px 16px;
   border-radius: 100px;
   margin-bottom: 1.5rem;
@@ -863,7 +882,7 @@ footer {
   font-size: 0.7rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  background: var(--cream);
+  background: linear-gradient(to bottom, var(--cream), #fef8f4);
 }
 
 /* ── Responsive ───────────────────────────────────────── */
