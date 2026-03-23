@@ -1,21 +1,6 @@
 // ── Detect touch device ──────────────────────────────────
 const isTouch = 'ontouchstart' in window;
 
-// ── Shared mouse state ──────────────────────────────────
-let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
-
-// ── Cursor glow follows mouse ───────────────────────────
-const cursorGlow = document.getElementById('cursorGlow');
-
-function animateGlow() {
-  glowX += (mouseX - glowX) * 0.08;
-  glowY += (mouseY - glowY) * 0.08;
-  cursorGlow.style.left = glowX + 'px';
-  cursorGlow.style.top = glowY + 'px';
-  requestAnimationFrame(animateGlow);
-}
-if (!isTouch) animateGlow();
-
 // ── Progress bar ─────────────────────────────────────────
 const progressBar = document.getElementById('progressBar');
 window.addEventListener('scroll', () => {
@@ -25,6 +10,138 @@ window.addEventListener('scroll', () => {
   progressBar.style.width = progress + '%';
 }, { passive: true });
 
+// ── Create clouds ────────────────────────────────────────
+const cloudsContainer = document.getElementById('clouds');
+
+function createCloud(className, shapes) {
+  const cloud = document.createElement('div');
+  cloud.classList.add('cloud', className);
+  shapes.forEach(s => {
+    const shape = document.createElement('div');
+    shape.classList.add('cloud__shape');
+    shape.style.width = s.w + 'px';
+    shape.style.height = s.h + 'px';
+    shape.style.left = s.x + 'px';
+    shape.style.top = s.y + 'px';
+    cloud.appendChild(shape);
+  });
+  cloudsContainer.appendChild(cloud);
+}
+
+createCloud('cloud--1', [
+  { w: 80, h: 40, x: 0, y: 20 },
+  { w: 60, h: 50, x: 30, y: 5 },
+  { w: 70, h: 35, x: 70, y: 18 },
+  { w: 50, h: 30, x: 100, y: 25 },
+]);
+
+createCloud('cloud--2', [
+  { w: 60, h: 30, x: 0, y: 15 },
+  { w: 50, h: 40, x: 20, y: 0 },
+  { w: 55, h: 28, x: 55, y: 12 },
+]);
+
+createCloud('cloud--3', [
+  { w: 70, h: 35, x: 0, y: 15 },
+  { w: 55, h: 45, x: 25, y: 0 },
+  { w: 65, h: 30, x: 60, y: 15 },
+  { w: 45, h: 25, x: 90, y: 22 },
+]);
+
+// ── Create garden flowers ────────────────────────────────
+const garden = document.getElementById('garden');
+
+const flowerTypes = [
+  { petals: 5, petalColor: '#FFB6C1', center: '#FFD700', petalW: 12, petalH: 18, stemH: 60 },
+  { petals: 6, petalColor: '#FF85A2', center: '#FFF176', petalW: 10, petalH: 16, stemH: 50 },
+  { petals: 5, petalColor: '#C3B1E1', center: '#FFD54F', petalW: 11, petalH: 15, stemH: 55 },
+  { petals: 8, petalColor: '#FFCBA4', center: '#FF8A65', petalW: 9, petalH: 14, stemH: 45 },
+  { petals: 5, petalColor: '#81D4FA', center: '#FFF9C4', petalW: 10, petalH: 15, stemH: 48 },
+  { petals: 6, petalColor: '#FF8B8B', center: '#FFEB3B', petalW: 11, petalH: 17, stemH: 58 },
+];
+
+const flowerPositions = [];
+for (let i = 0; i < 18; i++) {
+  flowerPositions.push(5 + (i / 18) * 90 + (Math.random() - 0.5) * 4);
+}
+
+flowerPositions.forEach((pos, i) => {
+  const type = flowerTypes[i % flowerTypes.length];
+  const scale = 0.6 + Math.random() * 0.6;
+  const flower = document.createElement('div');
+  flower.classList.add('garden-flower');
+  flower.style.left = pos + '%';
+  flower.style.setProperty('--sway-dur', (2.5 + Math.random() * 2) + 's');
+  flower.style.setProperty('--sway-delay', (Math.random() * 2) + 's');
+  flower.style.setProperty('--sway-from', (-2 - Math.random() * 3) + 'deg');
+  flower.style.setProperty('--sway-to', (2 + Math.random() * 3) + 'deg');
+  flower.style.transform = `scale(${scale})`;
+
+  // Stem
+  const stem = document.createElement('div');
+  stem.classList.add('garden-flower__stem');
+  stem.style.height = type.stemH + 'px';
+
+  // Flower head
+  const head = document.createElement('div');
+  head.classList.add('garden-flower__head');
+
+  // Petals
+  for (let p = 0; p < type.petals; p++) {
+    const petal = document.createElement('div');
+    petal.classList.add('garden-flower__petal');
+    petal.style.width = type.petalW + 'px';
+    petal.style.height = type.petalH + 'px';
+    petal.style.background = type.petalColor;
+    const angle = (p / type.petals) * 360;
+    petal.style.transform = `rotate(${angle}deg) translateY(-${type.petalH / 2 + 3}px)`;
+    head.appendChild(petal);
+  }
+
+  // Center
+  const center = document.createElement('div');
+  center.classList.add('garden-flower__center');
+  center.style.background = type.center;
+  head.appendChild(center);
+
+  flower.appendChild(head);
+  flower.appendChild(stem);
+  garden.appendChild(flower);
+});
+
+// ── Create butterflies ───────────────────────────────────
+const butterfliesContainer = document.getElementById('butterflies');
+const butterflyColors = ['#C3B1E1', '#FFB6C1', '#81D4FA', '#FFCBA4', '#FF85A2'];
+
+for (let i = 0; i < 4; i++) {
+  const bf = document.createElement('div');
+  bf.classList.add('butterfly');
+  bf.style.left = (15 + Math.random() * 70) + '%';
+  bf.style.bottom = (120 + Math.random() * 200) + 'px';
+  bf.style.setProperty('--fly-dur', (10 + Math.random() * 8) + 's');
+  bf.style.setProperty('--fly-delay', (Math.random() * 5) + 's');
+  bf.style.setProperty('--fly-scale', (0.6 + Math.random() * 0.5).toFixed(2));
+  bf.style.zIndex = '6';
+
+  const color = butterflyColors[i % butterflyColors.length];
+
+  const body = document.createElement('div');
+  body.classList.add('butterfly__body');
+
+  const wingL = document.createElement('div');
+  wingL.classList.add('butterfly__wing', 'butterfly__wing--left');
+  wingL.style.background = color;
+
+  const wingR = document.createElement('div');
+  wingR.classList.add('butterfly__wing', 'butterfly__wing--right');
+  wingR.style.background = color;
+
+  body.appendChild(wingL);
+  body.appendChild(wingR);
+  bf.appendChild(body);
+  butterfliesContainer.appendChild(bf);
+}
+
 // ── Floating petals ──────────────────────────────────────
 const petalsContainer = document.getElementById('petals');
 
@@ -33,18 +150,18 @@ function createPetal(x) {
   petal.classList.add('petal');
   petal.style.left = (x !== undefined ? x + 'px' : Math.random() * 100 + '%');
   petal.style.animationDuration = (6 + Math.random() * 6) + 's';
-  const size = 8 + Math.random() * 8;
+  const size = 8 + Math.random() * 10;
   petal.style.width = size + 'px';
   petal.style.height = size + 'px';
-  const hue = 320 + Math.random() * 50;
-  petal.style.background = `hsla(${hue}, 80%, ${70 + Math.random() * 20}%, 0.5)`;
+  const colors = ['#FFB6C1', '#FF85A2', '#FFCBA4', '#C3B1E1', '#FFD1DC'];
+  petal.style.background = colors[Math.floor(Math.random() * colors.length)];
   petalsContainer.appendChild(petal);
   petal.addEventListener('animationend', () => petal.remove());
 }
 
 setTimeout(() => {
   for (let i = 0; i < 5; i++) setTimeout(createPetal, i * 600);
-  setInterval(createPetal, 2000);
+  setInterval(createPetal, 2500);
 }, 3000);
 
 // ── Click to spawn petals + spark ────────────────────────
@@ -65,8 +182,8 @@ document.addEventListener('click', (e) => {
     const dist = 15 + Math.random() * 10;
     dot.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
     dot.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
-    const hue = 320 + Math.random() * 60;
-    dot.style.background = `hsl(${hue}, 80%, ${65 + Math.random() * 25}%)`;
+    const colors = ['#FFB6C1', '#FF85A2', '#FFD700', '#C3B1E1', '#FF8B8B'];
+    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
     spark.appendChild(dot);
   }
 
@@ -74,112 +191,66 @@ document.addEventListener('click', (e) => {
   setTimeout(() => spark.remove(), 700);
 });
 
-// ── Hero particles ───────────────────────────────────────
-const heroParticles = document.getElementById('heroParticles');
-const particleColors = ['rgba(255,107,157,0.6)', 'rgba(183,148,246,0.5)', 'rgba(78,205,196,0.4)'];
+// ── Cat interaction ──────────────────────────────────────
+const cat = document.getElementById('cat');
+let catClicks = 0;
 
-function createHeroParticle() {
-  const p = document.createElement('div');
-  p.classList.add('hero-particle');
-  p.style.left = Math.random() * 100 + '%';
-  p.style.bottom = Math.random() * 30 + '%';
-  p.style.animationDuration = (3 + Math.random() * 4) + 's';
-  p.style.animationDelay = Math.random() * 2 + 's';
-  const size = 3 + Math.random() * 4;
-  p.style.width = size + 'px';
-  p.style.height = size + 'px';
-  p.style.background = particleColors[Math.floor(Math.random() * particleColors.length)];
-  heroParticles.appendChild(p);
-  p.addEventListener('animationend', () => {
-    p.remove();
-    createHeroParticle();
-  });
-}
-for (let i = 0; i < 15; i++) createHeroParticle();
+cat.addEventListener('click', (e) => {
+  e.stopPropagation();
+  catClicks++;
 
-// ── Rose path draw animation ─────────────────────────────
-document.querySelectorAll('.rose-path').forEach(path => {
-  const length = path.getTotalLength();
-  path.style.strokeDasharray = length;
-  path.style.strokeDashoffset = length;
-});
-
-// ── Rose hover interaction ───────────────────────────────
-const heroRose = document.getElementById('heroRose');
-heroRose.addEventListener('click', () => {
-  const rect = heroRose.getBoundingClientRect();
+  // Spawn petals around cat
+  const rect = cat.getBoundingClientRect();
   const cx = rect.left + rect.width / 2;
-  for (let i = 0; i < 8; i++) {
-    setTimeout(() => createPetal(cx + (Math.random() - 0.5) * 60), i * 100);
+  for (let i = 0; i < 6; i++) {
+    setTimeout(() => createPetal(cx + (Math.random() - 0.5) * 80), i * 100);
   }
+
+  // Spawn floating hearts from cat
+  const cy = rect.top + rect.height / 3;
+  const emojis = ['❤️', '🐱', '💕', '🌸', '✨', '😻'];
+  for (let i = 0; i < 4; i++) {
+    const h = document.createElement('span');
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.classList.add('float-heart');
+    h.style.left = cx + 'px';
+    h.style.top = cy + 'px';
+    h.style.opacity = '0.9';
+    h.style.fontSize = (0.8 + Math.random() * 0.6) + 'rem';
+    document.body.appendChild(h);
+
+    const angle = (i / 4) * Math.PI - Math.PI / 2;
+    const dist = 50 + Math.random() * 40;
+
+    requestAnimationFrame(() => {
+      h.style.left = (cx + Math.cos(angle) * dist) + 'px';
+      h.style.top = (cy + Math.sin(angle) * dist - 50) + 'px';
+      h.style.opacity = '0';
+    });
+
+    setTimeout(() => h.remove(), 1600);
+  }
+
+  // Bounce cat
+  cat.style.transform = 'translateX(-50%) scale(1.15)';
+  setTimeout(() => { cat.style.transform = ''; }, 300);
 });
 
 // ── Parallax on scroll ───────────────────────────────────
 const heroContent = document.querySelector('.hero__content');
+const heroSun = document.querySelector('.hero__sun');
+const heroClouds = document.querySelectorAll('.cloud');
+
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   if (y < window.innerHeight) {
     heroContent.style.transform = `translateY(${y * 0.3}px)`;
     heroContent.style.opacity = 1 - (y / window.innerHeight) * 1.2;
+    heroSun.style.transform = `translateY(${y * -0.15}px) scale(${1 + y * 0.0003})`;
+    heroClouds.forEach((c, i) => {
+      c.style.transform = `translateY(${y * (0.05 + i * 0.05)}px)`;
+    });
   }
-}, { passive: true });
-
-// ── Twinkling stars ──────────────────────────────────────
-const starsContainer = document.getElementById('starsContainer');
-const stars = [];
-const starCount = window.innerWidth < 600 ? 30 : 70;
-
-for (let i = 0; i < starCount; i++) {
-  const star = document.createElement('div');
-  star.classList.add('star');
-  star.style.left = Math.random() * 100 + '%';
-  star.style.top = Math.random() * 100 + '%';
-  star.style.setProperty('--dur', (2 + Math.random() * 4) + 's');
-  star.style.setProperty('--delay', (Math.random() * 5) + 's');
-  star.style.setProperty('--max-opacity', (0.3 + Math.random() * 0.5).toFixed(2));
-  const size = 1 + Math.random() * 2;
-  star.style.width = size + 'px';
-  star.style.height = size + 'px';
-  starsContainer.appendChild(star);
-  stars.push(star);
-}
-
-// ── Aurora blob parallax ─────────────────────────────────
-const auroraBlobs = document.querySelectorAll('.aurora-blob');
-
-// ── Consolidated mousemove handler ───────────────────────
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-
-  if (isTouch) return;
-
-  // Aurora parallax
-  const nx = (e.clientX / window.innerWidth - 0.5) * 2;
-  const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-  auroraBlobs.forEach((blob, i) => {
-    const factor = (i + 1) * 15;
-    blob.style.transform = `translate(${nx * factor}px, ${ny * factor}px)`;
-  });
-
-  // Star proximity brightness
-  stars.forEach(star => {
-    const rect = star.getBoundingClientRect();
-    const sx = rect.left + rect.width / 2;
-    const sy = rect.top + rect.height / 2;
-    const dx = e.clientX - sx;
-    const dy = e.clientY - sy;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-
-    if (dist < 150) {
-      const scale = 1 + (1 - dist / 150) * 2;
-      star.style.transform = `scale(${scale})`;
-      star.style.opacity = (0.6 + (1 - dist / 150) * 0.4).toFixed(2);
-    } else {
-      star.style.transform = '';
-      star.style.opacity = '';
-    }
-  });
 }, { passive: true });
 
 // ── Scroll reveal ────────────────────────────────────────
@@ -195,7 +266,6 @@ const observer = new IntersectionObserver((entries) => {
       if (line.dataset.typed) return;
       line.dataset.typed = 'true';
 
-      // Blank line - just show it
       if (fullText.trim() === '' || fullText === '\u00A0') {
         setTimeout(() => {
           line.style.opacity = '1';
@@ -280,12 +350,10 @@ heartBtn.addEventListener('click', (e) => {
   heartCounter.classList.add('show');
   heartCounter.textContent = count === 1 ? '1 prayer sent' : count + ' prayers sent';
 
-  // Pulse ring
   heartRing.classList.remove('pulse');
   void heartRing.offsetWidth;
   heartRing.classList.add('pulse');
 
-  // Button bounce
   heartBtn.style.transition = 'transform 0.15s ease';
   heartBtn.style.transform = 'scale(0.85)';
   setTimeout(() => {
@@ -293,11 +361,10 @@ heartBtn.addEventListener('click', (e) => {
     heartBtn.style.transform = '';
   }, 200);
 
-  // Burst of floating hearts
   const rect = heartBtn.getBoundingClientRect();
   const cx = rect.left + rect.width / 2;
   const cy = rect.top + rect.height / 2;
-  const emojis = ['\u2764\uFE0F', '\uD83E\uDE77', '\uD83D\uDC97', '\uD83D\uDC96', '\u2728'];
+  const emojis = ['❤️', '🐱', '💗', '🌸', '✨', '💐'];
 
   for (let i = 0; i < 6; i++) {
     const h = document.createElement('span');

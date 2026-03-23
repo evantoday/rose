@@ -11,67 +11,124 @@
 </head>
 <body>
 
-  <!-- Aurora background -->
-  <div class="aurora-bg" id="auroraBg">
-    <div class="aurora-blob aurora-blob--1"></div>
-    <div class="aurora-blob aurora-blob--2"></div>
-    <div class="aurora-blob aurora-blob--3"></div>
-  </div>
-
-  <!-- Twinkling stars -->
-  <div class="stars-container" id="starsContainer"></div>
-
-  <!-- Cursor glow -->
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- Floating petals (created by JS) -->
+  <!-- Floating petals -->
   <div class="petals-container" id="petals"></div>
 
   <!-- Progress bar -->
   <div class="progress-bar" id="progressBar"></div>
 
-  <!-- Hero -->
+  <!-- Hero / Garden Scene -->
   <section class="hero" id="hero">
-    <div class="hero__bg"></div>
-    <div class="hero__particles" id="heroParticles"></div>
-    <div class="hero__content">
-      <div class="hero__rose" id="heroRose">
-        <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" class="rose-svg">
-          <!-- Stem -->
-          <line x1="100" y1="195" x2="100" y2="285" stroke="#4ecdc4" stroke-width="2" stroke-linecap="round" class="stem"/>
+    <!-- Sky -->
+    <div class="hero__sky"></div>
 
-          <!-- Leaves -->
-          <path d="M100 235 C90 225 75 222 68 230 C75 226 90 226 100 235" fill="#4ecdc4" opacity="0.8" class="leaf leaf--1"/>
-          <path d="M100 255 C110 245 125 242 132 250 C125 246 110 246 100 255" fill="#3dbdb5" opacity="0.8" class="leaf leaf--2"/>
+    <!-- Sun -->
+    <div class="hero__sun"></div>
 
-          <!-- Rose bloom - line art style -->
-          <g class="bloom" transform="translate(100, 140)">
-            <!-- Outer petals -->
-            <path d="M0,-50 C15,-48 30,-38 35,-25 C40,-10 38,8 30,20 C22,32 10,40 0,42 C-10,40 -22,32 -30,20 C-38,8 -40,-10 -35,-25 C-30,-38 -15,-48 0,-50Z"
-                  fill="none" stroke="#ff6b9d" stroke-width="1.5" stroke-linecap="round" class="rose-path rose-path--1" opacity="0"/>
-            <!-- Mid-outer petals -->
-            <path d="M-30,-15 C-28,-30 -18,-42 -5,-44 C8,-46 22,-38 28,-25 C34,-12 30,5 20,15"
-                  fill="none" stroke="#ff6b9d" stroke-width="1.5" stroke-linecap="round" class="rose-path rose-path--1" opacity="0"/>
-            <path d="M30,-15 C28,-30 18,-42 5,-44 C-8,-46 -22,-38 -28,-25 C-34,-12 -30,5 -20,15"
-                  fill="none" stroke="#e8a4b8" stroke-width="1.5" stroke-linecap="round" class="rose-path rose-path--2" opacity="0"/>
+    <!-- Clouds (created by JS) -->
+    <div id="clouds"></div>
 
-            <!-- Middle petals -->
-            <path d="M0,-35 C12,-33 22,-25 25,-14 C28,-3 24,10 16,18 C8,26 -2,28 -10,24"
-                  fill="none" stroke="#e8a4b8" stroke-width="1.4" stroke-linecap="round" class="rose-path rose-path--2" opacity="0"/>
-            <path d="M0,-35 C-12,-33 -22,-25 -25,-14 C-28,-3 -24,10 -16,18 C-8,26 2,28 10,24"
-                  fill="none" stroke="#e8a4b8" stroke-width="1.4" stroke-linecap="round" class="rose-path rose-path--3" opacity="0"/>
+    <!-- Hills -->
+    <div class="hero__hills">
+      <div class="hill hill--1"></div>
+      <div class="hill hill--2"></div>
+      <div class="hill hill--3"></div>
+    </div>
 
-            <!-- Inner petals -->
-            <path d="M0,-22 C8,-20 15,-14 16,-5 C17,4 12,12 5,16 C-2,20 -10,18 -14,12 C-18,6 -16,-4 -10,-12 C-6,-18 -2,-22 0,-22"
-                  fill="none" stroke="#f0c6d4" stroke-width="1.3" stroke-linecap="round" class="rose-path rose-path--4" opacity="0"/>
+    <!-- Ground -->
+    <div class="hero__ground"></div>
 
-            <!-- Center spiral -->
-            <path d="M0,-10 C5,-9 9,-5 9,0 C9,5 5,9 0,8 C-5,7 -8,3 -7,-2 C-6,-6 -3,-8 0,-7 C3,-6 5,-3 4,0 C3,3 1,4 0,3"
-                  fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" class="rose-path rose-path--5" opacity="0"/>
+    <!-- Garden flowers (created by JS) -->
+    <div class="garden" id="garden"></div>
+
+    <!-- Butterflies (created by JS) -->
+    <div id="butterflies"></div>
+
+    <!-- Cat -->
+    <div class="cat" id="cat">
+      <svg viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg" class="cat-svg">
+        <!-- Tail -->
+        <g class="cat-tail">
+          <path d="M15,85 C-5,70 -8,50 10,40 C15,37 20,42 18,48 C12,60 15,75 25,82"
+                fill="none" stroke="#E8945A" stroke-width="6" stroke-linecap="round"/>
+        </g>
+
+        <!-- Body -->
+        <g class="cat-body-group">
+          <!-- Back body -->
+          <ellipse cx="55" cy="90" rx="40" ry="28" fill="#E8945A"/>
+          <!-- Front body -->
+          <ellipse cx="95" cy="85" rx="30" ry="25" fill="#E8945A"/>
+          <!-- Belly -->
+          <ellipse cx="75" cy="98" rx="30" ry="15" fill="#F5C48A"/>
+          <!-- Front paws -->
+          <ellipse cx="110" cy="108" rx="8" ry="5" fill="#D4803E"/>
+          <ellipse cx="85" cy="110" rx="8" ry="5" fill="#D4803E"/>
+          <!-- Back paw -->
+          <ellipse cx="30" cy="108" rx="10" ry="6" fill="#D4803E"/>
+        </g>
+
+        <!-- Head -->
+        <g>
+          <!-- Head shape -->
+          <circle cx="115" cy="62" r="25" fill="#E8945A"/>
+          <!-- Inner face -->
+          <circle cx="115" cy="66" r="18" fill="#F0A86A"/>
+
+          <!-- Ears -->
+          <g class="cat-ear--left" style="transform-origin: 98px 42px;">
+            <polygon points="95,48 98,28 108,45" fill="#E8945A"/>
+            <polygon points="98,46 100,34 106,45" fill="#FFB6C1"/>
           </g>
-        </svg>
-        <div class="rose-glow"></div>
-      </div>
+          <g class="cat-ear--right" style="transform-origin: 132px 42px;">
+            <polygon points="122,45 132,28 135,48" fill="#E8945A"/>
+            <polygon points="124,45 130,34 132,46" fill="#FFB6C1"/>
+          </g>
+
+          <!-- Eyes -->
+          <g class="cat-eye-blink" style="transform-origin: 107px 58px;">
+            <ellipse cx="107" cy="58" rx="5" ry="5.5" fill="white"/>
+            <ellipse cx="107" cy="58" rx="3" ry="4" fill="#4A3728"/>
+            <circle cx="106" cy="56" r="1.2" fill="white"/>
+          </g>
+          <g class="cat-eye-blink" style="transform-origin: 125px 58px;">
+            <ellipse cx="125" cy="58" rx="5" ry="5.5" fill="white"/>
+            <ellipse cx="125" cy="58" rx="3" ry="4" fill="#4A3728"/>
+            <circle cx="124" cy="56" r="1.2" fill="white"/>
+          </g>
+
+          <!-- Nose -->
+          <ellipse cx="116" cy="66" rx="2.5" ry="2" fill="#FF8B8B"/>
+
+          <!-- Mouth -->
+          <path d="M116,68 C114,72 110,73 108,71" fill="none" stroke="#4A3728" stroke-width="1" stroke-linecap="round"/>
+          <path d="M116,68 C118,72 122,73 124,71" fill="none" stroke="#4A3728" stroke-width="1" stroke-linecap="round"/>
+
+          <!-- Whiskers -->
+          <g class="cat-whiskers">
+            <line x1="98" y1="64" x2="78" y2="60" stroke="#4A3728" stroke-width="0.8" opacity="0.5"/>
+            <line x1="98" y1="67" x2="76" y2="68" stroke="#4A3728" stroke-width="0.8" opacity="0.5"/>
+            <line x1="98" y1="70" x2="78" y2="74" stroke="#4A3728" stroke-width="0.8" opacity="0.5"/>
+          </g>
+          <g class="cat-whiskers" style="animation-delay: 2.5s;">
+            <line x1="134" y1="64" x2="154" y2="60" stroke="#4A3728" stroke-width="0.8" opacity="0.5"/>
+            <line x1="134" y1="67" x2="156" y2="68" stroke="#4A3728" stroke-width="0.8" opacity="0.5"/>
+            <line x1="134" y1="70" x2="154" y2="74" stroke="#4A3728" stroke-width="0.8" opacity="0.5"/>
+          </g>
+
+          <!-- Cheek blush -->
+          <circle cx="101" cy="66" r="4" fill="#FFB6C1" opacity="0.4"/>
+          <circle cx="131" cy="66" r="4" fill="#FFB6C1" opacity="0.4"/>
+        </g>
+
+        <!-- Stripe markings -->
+        <path d="M105,42 C110,38 118,38 125,42" fill="none" stroke="#D4803E" stroke-width="2" stroke-linecap="round"/>
+        <path d="M108,46 C112,43 118,43 122,46" fill="none" stroke="#D4803E" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="hero__content">
       <h1 class="hero__title">You Are Not Alone</h1>
       <p class="hero__sub">this one's for you</p>
       <div class="hero__scroll">
@@ -111,27 +168,27 @@
       <p class="section__desc">tap a card to keep it</p>
       <div class="cards">
         <div class="card" data-tilt>
-          <div class="card__icon">&#x1F339;</div>
+          <div class="card__icon">&#x1F338;</div>
           <p class="card__text">You are strong</p>
           <div class="card__glow"></div>
         </div>
         <div class="card" data-tilt>
-          <div class="card__icon">&#x1F33C;</div>
+          <div class="card__icon">&#x1F431;</div>
           <p class="card__text">You're not alone</p>
           <div class="card__glow"></div>
         </div>
         <div class="card" data-tilt>
-          <div class="card__icon">&#x1F33A;</div>
+          <div class="card__icon">&#x1F33B;</div>
           <p class="card__text">Someone cares about you</p>
           <div class="card__glow"></div>
         </div>
         <div class="card" data-tilt>
-          <div class="card__icon">&#x1F338;</div>
+          <div class="card__icon">&#x1F33C;</div>
           <p class="card__text">It's okay to rest</p>
           <div class="card__glow"></div>
         </div>
         <div class="card" data-tilt>
-          <div class="card__icon">&#x1F337;</div>
+          <div class="card__icon">&#x1F33A;</div>
           <p class="card__text">I'm always here</p>
           <div class="card__glow"></div>
         </div>
