@@ -11,6 +11,16 @@
 </head>
 <body>
 
+  <!-- Aurora background -->
+  <div class="aurora-bg" id="auroraBg">
+    <div class="aurora-blob aurora-blob--1"></div>
+    <div class="aurora-blob aurora-blob--2"></div>
+    <div class="aurora-blob aurora-blob--3"></div>
+  </div>
+
+  <!-- Twinkling stars -->
+  <div class="stars-container" id="starsContainer"></div>
+
   <!-- Cursor glow -->
   <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -27,30 +37,37 @@
     <div class="hero__content">
       <div class="hero__rose" id="heroRose">
         <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" class="rose-svg">
-          <line x1="100" y1="180" x2="100" y2="290" stroke="#5a9e50" stroke-width="3" stroke-linecap="round" class="stem"/>
-          <path d="M100 230 C85 220 70 225 65 235 C70 230 85 228 100 230" fill="#6ab560" class="leaf leaf--1"/>
-          <path d="M100 250 C115 240 130 245 135 255 C130 250 115 248 100 250" fill="#5aad4c" class="leaf leaf--2"/>
-          <path d="M100 185 C94 178 82 180 78 174 C84 176 94 174 100 178" fill="#6ab560"/>
-          <path d="M100 185 C106 178 118 180 122 174 C116 176 106 174 100 178" fill="#5aad4c"/>
-          <g class="bloom">
-            <ellipse cx="72" cy="155" rx="28" ry="34" fill="#e8768a" opacity="0.7" transform="rotate(-15,72,155)"/>
-            <ellipse cx="128" cy="155" rx="28" ry="34" fill="#ea7e92" opacity="0.7" transform="rotate(15,128,155)"/>
-            <ellipse cx="60" cy="148" rx="24" ry="30" fill="#ed8a9c" opacity="0.55" transform="rotate(-25,60,148)"/>
-            <ellipse cx="140" cy="148" rx="24" ry="30" fill="#ec88a0" opacity="0.55" transform="rotate(25,140,148)"/>
-            <ellipse cx="100" cy="168" rx="34" ry="20" fill="#ef8c9e" opacity="0.65"/>
-            <ellipse cx="82" cy="148" rx="22" ry="28" fill="#f4a8b8" opacity="0.8" transform="rotate(-10,82,148)"/>
-            <ellipse cx="118" cy="148" rx="22" ry="28" fill="#f2a0b2" opacity="0.8" transform="rotate(10,118,148)"/>
-            <ellipse cx="100" cy="160" rx="28" ry="18" fill="#f7bcc8" opacity="0.78"/>
-            <ellipse cx="90" cy="145" rx="18" ry="24" fill="#f8c2cc" opacity="0.76" transform="rotate(-5,90,145)"/>
-            <ellipse cx="110" cy="145" rx="18" ry="24" fill="#fac8d2" opacity="0.76" transform="rotate(5,110,145)"/>
-            <ellipse cx="92" cy="138" rx="16" ry="22" fill="#fbd4dc" opacity="0.85" transform="rotate(-8,92,138)"/>
-            <ellipse cx="108" cy="138" rx="16" ry="22" fill="#fcdce2" opacity="0.85" transform="rotate(8,108,138)"/>
-            <ellipse cx="100" cy="148" rx="20" ry="14" fill="#fde4ea" opacity="0.82"/>
-            <ellipse cx="96" cy="132" rx="12" ry="16" fill="#fee8ee" opacity="0.9" transform="rotate(-5,96,132)"/>
-            <ellipse cx="104" cy="132" rx="12" ry="16" fill="#fef0f4" opacity="0.9" transform="rotate(5,104,132)"/>
-            <ellipse cx="100" cy="136" rx="14" ry="10" fill="#fff2f5" opacity="0.88"/>
-            <ellipse cx="100" cy="130" rx="8" ry="8" fill="#fff6f8" opacity="0.85"/>
-            <path d="M97 130 C97 126 100 124 103 126 C104 128 101 132 98 131" fill="#fffafa" opacity="0.8"/>
+          <!-- Stem -->
+          <line x1="100" y1="195" x2="100" y2="285" stroke="#4ecdc4" stroke-width="2" stroke-linecap="round" class="stem"/>
+
+          <!-- Leaves -->
+          <path d="M100 235 C90 225 75 222 68 230 C75 226 90 226 100 235" fill="#4ecdc4" opacity="0.8" class="leaf leaf--1"/>
+          <path d="M100 255 C110 245 125 242 132 250 C125 246 110 246 100 255" fill="#3dbdb5" opacity="0.8" class="leaf leaf--2"/>
+
+          <!-- Rose bloom - line art style -->
+          <g class="bloom" transform="translate(100, 140)">
+            <!-- Outer petals -->
+            <path d="M0,-50 C15,-48 30,-38 35,-25 C40,-10 38,8 30,20 C22,32 10,40 0,42 C-10,40 -22,32 -30,20 C-38,8 -40,-10 -35,-25 C-30,-38 -15,-48 0,-50Z"
+                  fill="none" stroke="#ff6b9d" stroke-width="1.5" stroke-linecap="round" class="rose-path rose-path--1" opacity="0"/>
+            <!-- Mid-outer petals -->
+            <path d="M-30,-15 C-28,-30 -18,-42 -5,-44 C8,-46 22,-38 28,-25 C34,-12 30,5 20,15"
+                  fill="none" stroke="#ff6b9d" stroke-width="1.5" stroke-linecap="round" class="rose-path rose-path--1" opacity="0"/>
+            <path d="M30,-15 C28,-30 18,-42 5,-44 C-8,-46 -22,-38 -28,-25 C-34,-12 -30,5 -20,15"
+                  fill="none" stroke="#e8a4b8" stroke-width="1.5" stroke-linecap="round" class="rose-path rose-path--2" opacity="0"/>
+
+            <!-- Middle petals -->
+            <path d="M0,-35 C12,-33 22,-25 25,-14 C28,-3 24,10 16,18 C8,26 -2,28 -10,24"
+                  fill="none" stroke="#e8a4b8" stroke-width="1.4" stroke-linecap="round" class="rose-path rose-path--2" opacity="0"/>
+            <path d="M0,-35 C-12,-33 -22,-25 -25,-14 C-28,-3 -24,10 -16,18 C-8,26 2,28 10,24"
+                  fill="none" stroke="#e8a4b8" stroke-width="1.4" stroke-linecap="round" class="rose-path rose-path--3" opacity="0"/>
+
+            <!-- Inner petals -->
+            <path d="M0,-22 C8,-20 15,-14 16,-5 C17,4 12,12 5,16 C-2,20 -10,18 -14,12 C-18,6 -16,-4 -10,-12 C-6,-18 -2,-22 0,-22"
+                  fill="none" stroke="#f0c6d4" stroke-width="1.3" stroke-linecap="round" class="rose-path rose-path--4" opacity="0"/>
+
+            <!-- Center spiral -->
+            <path d="M0,-10 C5,-9 9,-5 9,0 C9,5 5,9 0,8 C-5,7 -8,3 -7,-2 C-6,-6 -3,-8 0,-7 C3,-6 5,-3 4,0 C3,3 1,4 0,3"
+                  fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" class="rose-path rose-path--5" opacity="0"/>
           </g>
         </svg>
         <div class="rose-glow"></div>
